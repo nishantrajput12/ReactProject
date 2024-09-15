@@ -2,33 +2,54 @@
 import React, { useEffect, useState } from 'react';
 
 const Form = () => {
- const [email,setEmail] =useState('');
- const [name,setName] =useState('');
- const [message,setMessage] =useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
-  
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.name) newErrors.name = 'Name is required';
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
+    }
+    if (!formData.message) newErrors.message = 'Message is required';
+    return newErrors;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEmail(value)
-    console.log("VALUE is:",value)
     setFormData({ ...formData, [name]: value });
   };
-  const handleReset = (e) => {
-    setFormData({ ...formData, [name]: ' ', [email]:'' ,[message]:''});
-   setEmail('')
+
+  const handleReset = () => {
+    setFormData({
+      name: '',
+      email: '',
+      message: '',
+    });
+    setErrors({});
   };
-  useEffect(()=>{
-    console.log("FORM DATA:",formData)
-  },[formData])
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission, e.g., send data to a server or API
-    console.log('Form data submitted:', formData);
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      // Handle form submission, e.g., send data to a server or API
+      console.log('Form data submitted:', formData);
+      handleReset(); // Reset form fields after submission
+    }
   };
+
+  useEffect(() => {
+    console.log('FORM DATA:', formData);
+  }, [formData]);
 
   return (
     <div className="form-container">
@@ -44,6 +65,7 @@ const Form = () => {
             onChange={handleChange}
             required
           />
+          {errors.name && <span className="error">{errors.name}</span>}
         </div>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
@@ -55,6 +77,7 @@ const Form = () => {
             onChange={handleChange}
             required
           />
+          {errors.email && <span className="error">{errors.email}</span>}
         </div>
         <div className="form-group">
           <label htmlFor="message">Message:</label>
@@ -65,8 +88,9 @@ const Form = () => {
             onChange={handleChange}
             required
           ></textarea>
+          {errors.message && <span className="error">{errors.message}</span>}
         </div>
-        <button onClick={handleReset}type="submit">Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

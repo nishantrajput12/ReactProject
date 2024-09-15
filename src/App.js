@@ -5,6 +5,8 @@ import Image from './Hello/image';
 import Form from './Hello/form';
 import Compo from './comp/compo';
 import ParentComponent from './comp/parent';
+import LifeCycleDemo from './comp/lifeCycle';
+import TodoList from './lists/to-do';
 
 
 
@@ -34,6 +36,8 @@ function App() {
       <Form/>
       <Compo/>
       <ParentComponent/>
+      <LifeCycleDemo/>
+      <TodoList/>
     </div>
     
   );

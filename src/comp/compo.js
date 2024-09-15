@@ -7,7 +7,11 @@ function Compo(){
         <div >
         
         <p>you clicked{count}times</p>
-        <button onClick={()=> setcount(count+1)}>click me</button>
+        <div className="animated-button-container">
+
+        <button className="animated-button" onClick={()=> setcount(count+1)}>click me</button>
+        </div>
+
         </div>
 
     );

@@ -38,7 +38,7 @@ body {
 }
 
 .header a:hover {
-  background-color: #ebf376;
+  background-color: #e6f787;
   color: rgb(234, 115, 115);
 
 }
@@ -96,7 +96,7 @@ padding: 3px;
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  .App {background: rgb(238, 237, 182);}
+  .App {background: rgb(240, 243, 243);}
 }
 .App-logo {
   height: 40vmin;
@@ -154,12 +154,14 @@ padding: 3px;
 
 .gallery-item:hover {
   transform: scale(1.05);
+  
 }
 
 .gallery-item img {
   width: 100%;
   height: auto;
   display: block;
+  
 }
 
 .desc {
@@ -177,6 +179,7 @@ padding: 3px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;
+  
 }
 
 .form-group {
@@ -194,6 +197,7 @@ textarea {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
+  
 }
 
 button {
@@ -203,8 +207,100 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  
 }
 
 button:hover {
   background-color: #0056b3;
+
+ 
+  
+}
+@keyframes colors {
+  0% {
+    background-color: #007bff;
+  }
+  10%{
+    background-color: #15b300;
+  }
+  20%{
+    background-color: #ff9900;
+  }
+}
+.animated-button{
+  background-color: #61dafb;
+  color: #fff;
+  padding: auto;
+  border-radius: 8%;
+  cursor: pointer;
+  transition: all 0.3 ease;
+  animation: colors 2s infinite; /* i made it use to change color*/
+}
+.animated-button:hover{
+  background-color: #61dafb;
+  transform: scale(1,1);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+
+  
+}
+/*  todo list css *//* src/components/TodoListComponent.css */
+.todo-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* animation: colors 2s infinite; */
+}
+
+.todo-input {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.todo-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.todo-input button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+  align-items: center;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ff4d4d;
+  font-size: 1.2em;
+}
+
+.delete-button:hover {
+  color: #ff1a1a;
 }
